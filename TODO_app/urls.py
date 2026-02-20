@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from todo import urls
 from todo import views
+from django.shortcuts import redirect
+
+def home_redirect(request):
+    return redirect('login')
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home_redirect),
     path('todo/', include('todo.urls')),
     path('login/', views.login_todo, name = 'login'),
     path('logout/', views.logout_todo, name = 'logout'),
