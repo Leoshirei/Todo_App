@@ -7,17 +7,12 @@
 <body>
     <h1>My Todos</h1>
     {% for todo in todos %}
-        <li>
-            {{ todo.title }}
-            {% if todo.completed %}
-                ✅
-
-            {% else %}
-                ❌
-
-            {% endif %}
-        </li>
-
+        {{ todo.title }}
+        <form method = 'POST' action = "{% url 'is_completed' todo.id %}">
+              {% csrf_token %}
+            <input type = "checkbox" onchange = "this.form.submit()"
+                {% if todo.completed %}checked{% endif %}>
+        </form>
     {% endfor %}
 </body>
 </html>
