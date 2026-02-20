@@ -8,9 +8,11 @@ def todo_list(request):
 def is_completed(request, id):
     todo = get_object_or_404(Todo, id = id, owner = request.user)
     todo.completed = not todo.completed
-    if todo.completed:
-        todo.delete()
-    else:
-        todo.save()
+    todo.save()
+    return redirect('todo_list')
+
+def todo_delete(request, id):
+    todo = get_object_or_404(Todo, id = id, owner = request.user)
+    todo.delete()
     return redirect('todo_list')
 

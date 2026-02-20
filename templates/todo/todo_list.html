@@ -7,12 +7,20 @@
 <body>
     <h1>My Todos</h1>
     {% for todo in todos %}
-        {{ todo.title }}
+        {% if todo.completed %}
+            <span style = "text-decoration: line-through;">{{ todo.title }}</span>
+        {% else %}
+            {{ todo.title }}
+        {% endif %}
+        <br>
         <form method = 'POST' action = "{% url 'is_completed' todo.id %}">
               {% csrf_token %}
             <input type = "checkbox" onchange = "this.form.submit()"
                 {% if todo.completed %}checked{% endif %}>
         </form>
+        <br>
+        <a href = "{% url 'todo_delete' todo.id %}">Delete</a>
+        <hr>
     {% endfor %}
 </body>
 </html>
