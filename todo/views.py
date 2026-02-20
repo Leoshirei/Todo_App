@@ -30,4 +30,18 @@ def todo_create(request):
         form = TodoForm()
     return render(request, 'todo/todo_create.html', {'form': form})
 
+def todo_update(request, id):
+    todo = get_object_or_404(Todo, id = id, owner = request.user)
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance = todo)
+        if form.is_valid():
+            todo = form.save(commit = False)
+            todo.owner = request.user
+            form.save()
+            return redirect('todo_list')
+    else:
+        form = TodoForm(instance = todo)
+        return render(request, 'todo/todo_create.html', {'form': form})
+
+
 

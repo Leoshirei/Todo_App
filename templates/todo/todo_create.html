@@ -7,7 +7,7 @@
 <body>
     <form method = 'POST'>
         {% csrf_token %}
-        {{ form }}
+        Name Task: {{ form.title }} <br>
         <button type = "submit">Save and add</button>
     </form>
 </body>
