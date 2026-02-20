@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>My Todos</h1>
+    <a href = "{% url 'todo_create'%}">Add task</a> <br><br>
     {% for todo in todos %}
         {% if todo.completed %}
             <span style = "text-decoration: line-through;">{{ todo.title }}</span>
