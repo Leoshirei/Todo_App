@@ -23,6 +23,10 @@ Tech Stack:
 Author
 Created as a backend portfolio project.
 
+Wojciech Kłos  
+LinkedIn: https://linkedin.com/in/wojciech-klos-dev
+
+
 ## How to run
     1. Clone repository
     git clone https://github.com/yourusername/contact-manager.git
